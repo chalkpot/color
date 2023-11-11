@@ -17,7 +17,7 @@ await build({
     name: "@chalkpot/color",
     version: Deno.args[0],
     description:
-      "Color is a tool for creating [RGB] color by range and by HSL without leaving RGB space.",
+      "Color is a tool for creating RGB color by range and by HSL without leaving RGB space.",
     author: "mineejo",
     license: "MIT",
     homepage: "https://github.com/chalkpot/color#readme",
