@@ -15,6 +15,8 @@ import { percent } from "./util.ts";
  * const red = new Color(false, 255, 0, 0)
  * const blue = new Color(true, 0, 0, 100);
  * ```
+ *
+ * #### Percentage. Use percentages instead of component range, if true.
  */
 export class Color {
   public readonly components: Rgb = [0, 0, 0];
@@ -22,12 +24,6 @@ export class Color {
   public readonly green: number = 0;
   public readonly blue: number = 0;
 
-  /**
-   * @param percentage
-   * Use percentages instead of component range, if true.
-   *
-   * @param components
-   */
   public constructor(percentage: boolean = false, ...components: Rgb) {
     const [red, green, blue]: Rgb = percentage
       ? this.rgbPercent(...components)

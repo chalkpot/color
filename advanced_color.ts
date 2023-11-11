@@ -22,6 +22,21 @@ import { rgbColorWheel } from "./color/rgb_color_wheel.ts";
  * const paleRed = new AdvancedColor(100, 70, 80);
  * console.log(paleRed.components); // [255, 173.3, 173.3]
  * ```
+ *
+ * #### Hue. Percentage value of the color wheel from 0 to 100:
+ * - Red: 0;
+ * - Green: 33.33;
+ * - Blue: 66.66;
+ * - Red: 100;
+ *
+ * #### Saturation. Percentage value from 0 to 100:
+ * - Colorless (grey color): 0;
+ * - Hue color: 100;
+ *
+ * #### Lightness. Percentage value from 0 to 100:
+ * - Black: 0;
+ * - Hue color: 50;
+ * - White: 100;
  */
 export class AdvancedColor {
   public readonly hue: number = 0;
@@ -36,25 +51,6 @@ export class AdvancedColor {
   private saturationColor: Color = new Color(false, ...this.components);
   private lightnessColor: Color = new Color(false, ...this.components);
 
-  /**
-   * @param hue
-   * Percentage value of the color wheel from `0` to `100`:
-   * - Red: `0`;
-   * - Green: `33.33`;
-   * - Blue: `66.66`;
-   * - Red: `100`;
-   *
-   * @param saturation
-   * Percentage value from `0` to `100`:
-   * - Colorless (grey color): `0`;
-   * - Hue color: `100`;
-   *
-   * @param lightness
-   * Percentage value from `0` to `100`:
-   * - Black: `0`;
-   * - Hue color: `50`;
-   * - White: `100`;
-   */
   public constructor(
     hue: number,
     saturation?: number | undefined,
