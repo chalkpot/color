@@ -77,7 +77,7 @@ export class AdvancedColor {
 
   private _rgbColor: Color = new Color(false, ...this.components);
 
-  get rgbColor(): Color {
+  public get rgbColor(): Color {
     return this._rgbColor;
   }
 
