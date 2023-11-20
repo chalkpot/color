@@ -5,7 +5,7 @@ import { truncComponents } from "../advanced_color_test.ts";
 import { Color } from "../color.ts";
 import { mixColors } from "./mix_colors.ts";
 
-Deno.test("mix function correct", async (t) => {
+Deno.test("mix colors function correct", async (t) => {
   const purple: Color = mixColors(
     new Color(false, 255, 0, 0),
     new Color(false, 0, 0, 255),

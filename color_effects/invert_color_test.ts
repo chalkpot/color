@@ -4,7 +4,7 @@ import { assertEquals } from "../dev_deps.ts";
 import { Color } from "../color.ts";
 import { invertColor } from "./invert_color.ts";
 
-Deno.test("invert function correct", () => {
+Deno.test("invert color function correct", () => {
   let red: Color = new Color(false, 255, 0, 0);
   let black: Color = new Color(false, 0, 0, 0);
   let white: Color = new Color(false, 255, 255, 255);

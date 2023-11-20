@@ -4,7 +4,7 @@ import { assertEquals } from "../dev_deps.ts";
 import { Color } from "../color.ts";
 import { subtractColors } from "./subtract_colors.ts";
 
-Deno.test("subtract function correct", () => {
+Deno.test("subtract colors function correct", () => {
   const purpleColor: Color = new Color(false, 255, 0, 255);
   const redColor: Color = new Color(false, 255, 0, 0);
   const blueColor: Color = subtractColors(purpleColor, redColor);
