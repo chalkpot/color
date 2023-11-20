@@ -1,6 +1,6 @@
 {
   "tasks": {
-    // npm publish --access public
+    // cd .npm; npm publish --access public
     "build": "deno run --allow-read --allow-write --allow-net --allow-env --allow-run _build_npm.ts"
   },
   "fmt": {
