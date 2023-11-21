@@ -1,8 +1,9 @@
 // Copyright 2023 mineejo. All rights reserved. MIT license.
 
-import { Rgb, Rgba } from "../color/mod.ts";
+import { Rgb } from "../color/rgb.ts";
+import { Rgba } from "../color/rgba.ts";
 import { assertEquals } from "../dev_deps.ts";
-import { alphaColor } from "./alpha_color.ts";
+import { alphaComponent } from "./alpha_component.ts";
 
 /**
  * ### Example
@@ -20,13 +21,13 @@ import { alphaColor } from "./alpha_color.ts";
  */
 Deno.test("alpha color function correct", () => {
   const redColorComponents: Rgb = [255, 0, 0];
-  const rgb: Rgb | Rgba = alphaColor([...redColorComponents, 100], false);
-  const rgba: Rgb | Rgba = alphaColor(rgb, true);
+  const rgb: Rgb | Rgba = alphaComponent([...redColorComponents, 100], false);
+  const rgba: Rgb | Rgba = alphaComponent(rgb, true);
 
   assertEquals(rgb, redColorComponents, `"rgb"`);
   assertEquals(rgba, [...redColorComponents, 100], `"rgba"`);
   assertEquals(
-    alphaColor(rgb, true, 90),
+    alphaComponent(rgb, true, 90),
     [...redColorComponents, 90],
     `"alphaColor(rgb, true, 90)"`,
   );

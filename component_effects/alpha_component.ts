@@ -1,6 +1,7 @@
 // Copyright 2023 mineejo. All rights reserved. MIT license.
 
-import { Rgb, Rgba } from "../color/mod.ts";
+import { Rgb } from "../color/rgb.ts";
+import { Rgba } from "../color/rgba.ts";
 import { percent } from "../util.ts";
 
 /**
@@ -17,7 +18,7 @@ import { percent } from "../util.ts";
  * console.log(thirdColor); // [0, 255, 0];
  * ```
  */
-export function alphaColor(
+export function alphaComponent(
   components: Rgb | Rgba,
   alpha: boolean,
   percentage = 100,
