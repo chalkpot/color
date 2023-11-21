@@ -2,8 +2,7 @@
 
 /**
  * Color is a tool for creating RGB color by range and by HSL
- * without leaving RGB space. With additional tools,
- * unlimited development and no dependencies.
+ * without leaving RGB space.
  *
  * @module
  */

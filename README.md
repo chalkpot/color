@@ -1,7 +1,7 @@
 # Color
 
 Color is a tool for creating [RGB] color by range and by HSL without leaving RGB
-space. With `additional tools`, `unlimited development` and `no dependencies`.
+space.
 
 [Read documentation, API...]
 
