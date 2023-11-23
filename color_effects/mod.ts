@@ -6,3 +6,5 @@ export { matrixColor } from "./matrix_color.ts";
 export { mixColors } from "./mix_colors.ts";
 export { subtractColors } from "./subtract_colors.ts";
 export { summarizeColors } from "./summarize_colors.ts";
+
+export * from "./color_blind/mod.ts";
