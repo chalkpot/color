@@ -3,12 +3,7 @@
 import { assertEquals } from "./dev_deps.ts";
 import { AdvancedColor } from "./advanced_color.ts";
 import { Rgb } from "./color/mod.ts";
-import { Color } from "./color.ts";
-
-export function truncComponents(color: AdvancedColor | Color): Rgb {
-  const [_red, _green, _blue]: Rgb = color.components;
-  return [Math.trunc(_red), Math.trunc(_green), Math.trunc(_blue)];
-}
+import { getTruncComponents } from "./util.ts";
 
 Deno.test("class contains correct fields", async (t) => {
   const red = 31;
@@ -31,13 +26,13 @@ Deno.test("class contains correct fields", async (t) => {
 
   await t.step("dependent field contains correct values", () => {
     assertEquals(
-      truncComponents(color.rgbColor),
+      getTruncComponents(color.rgbColor),
       [red, green, blue],
       `"color.rgbColor"`,
     );
 
     assertEquals(
-      truncComponents(color),
+      getTruncComponents(color),
       [red, green, blue],
       `"color"`,
     );
@@ -50,20 +45,20 @@ Deno.test("HSL conversion of red, green and blue correct", async (t) => {
   const blue: Rgb = [0, 0, 255];
 
   const hue: AdvancedColor = new AdvancedColor(0);
-  assertEquals(truncComponents(hue), red, `"hue"`);
+  assertEquals(getTruncComponents(hue), red, `"hue"`);
 
   await t.step("no lightness or saturation values do not change hue", () => {
     const hueSaturation: AdvancedColor = new AdvancedColor(0, 100);
-    assertEquals(truncComponents(hueSaturation), red, `"hueSaturation"`);
+    assertEquals(getTruncComponents(hueSaturation), red, `"hueSaturation"`);
 
     const hueLightness: AdvancedColor = new AdvancedColor(0, undefined, 50);
-    assertEquals(truncComponents(hueLightness), red, `"hueLightness"`);
+    assertEquals(getTruncComponents(hueLightness), red, `"hueLightness"`);
   });
 
   await t.step("default values do not change hue", () => {
     const hueSaturationLightness: AdvancedColor = new AdvancedColor(0, 100, 50);
     assertEquals(
-      truncComponents(hueSaturationLightness),
+      getTruncComponents(hueSaturationLightness),
       red,
       `"hueSaturationLightness"`,
     );
@@ -71,23 +66,23 @@ Deno.test("HSL conversion of red, green and blue correct", async (t) => {
 
   await t.step("hue range correct", () => {
     const startRedColor: AdvancedColor = new AdvancedColor(0);
-    assertEquals(truncComponents(startRedColor), red, `"startRedColor"`);
+    assertEquals(getTruncComponents(startRedColor), red, `"startRedColor"`);
 
     const greenColor: AdvancedColor = new AdvancedColor(33.33);
-    assertEquals(truncComponents(greenColor), green, `"greenColor"`);
+    assertEquals(getTruncComponents(greenColor), green, `"greenColor"`);
 
     const blueColor: AdvancedColor = new AdvancedColor(66.66);
-    assertEquals(truncComponents(blueColor), blue, `"blueColor"`);
+    assertEquals(getTruncComponents(blueColor), blue, `"blueColor"`);
 
     const endRedColor: AdvancedColor = new AdvancedColor(100);
-    assertEquals(truncComponents(endRedColor), red, `"endRedColor"`);
+    assertEquals(getTruncComponents(endRedColor), red, `"endRedColor"`);
   });
 
   await t.step("saturation range correct", () => {
     const redSaturated: Rgb = [255, 0, 0];
     const saturatedColor: AdvancedColor = new AdvancedColor(0, 100);
     assertEquals(
-      truncComponents(saturatedColor),
+      getTruncComponents(saturatedColor),
       redSaturated,
       `"saturatedColor"`,
     );
@@ -95,7 +90,7 @@ Deno.test("HSL conversion of red, green and blue correct", async (t) => {
     const redUnsaturated: Rgb = [63, 63, 63];
     const unsaturatedColor: AdvancedColor = new AdvancedColor(0, 0);
     assertEquals(
-      truncComponents(unsaturatedColor),
+      getTruncComponents(unsaturatedColor),
       redUnsaturated,
       `"unsaturatedColor"`,
     );
@@ -105,7 +100,7 @@ Deno.test("HSL conversion of red, green and blue correct", async (t) => {
     const black: Rgb = [0, 0, 0];
     const blackColor: AdvancedColor = new AdvancedColor(0, undefined, 0);
     assertEquals(
-      truncComponents(blackColor),
+      getTruncComponents(blackColor),
       black,
       `"blackColor"`,
     );
@@ -113,7 +108,7 @@ Deno.test("HSL conversion of red, green and blue correct", async (t) => {
     const white: Rgb = [255, 255, 255];
     const whiteColor: AdvancedColor = new AdvancedColor(0, undefined, 100);
     assertEquals(
-      truncComponents(whiteColor),
+      getTruncComponents(whiteColor),
       white,
       `"whiteColor"`,
     );

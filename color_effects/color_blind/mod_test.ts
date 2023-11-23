@@ -3,7 +3,7 @@
 import { Color } from "../../color.ts";
 import * as originalFilters from "./mod.ts";
 import { assertEquals } from "../../dev_deps.ts";
-import { truncComponents } from "../../advanced_color_test.ts";
+import { getTruncComponents } from "../../util.ts";
 
 // deno-lint-ignore no-explicit-any
 const filters = originalFilters as any;
@@ -59,31 +59,31 @@ Deno.test("color blindness functions correct", async (t) => {
 
     await t.step(`${func.name} function correct`, () => {
       assertEquals(
-        truncComponents(func(red)),
+        getTruncComponents(func(red)),
         functionValues?.[func.name]?.[0],
         `"truncComponents(func(red))"`,
       );
 
       assertEquals(
-        truncComponents(func(green)),
+        getTruncComponents(func(green)),
         functionValues?.[func.name]?.[1],
         `"truncComponents(func(green))"`,
       );
 
       assertEquals(
-        truncComponents(func(blue)),
+        getTruncComponents(func(blue)),
         functionValues?.[func.name]?.[2],
         `"truncComponents(func(blue))"`,
       );
 
       assertEquals(
-        truncComponents(func(white)),
+        getTruncComponents(func(white)),
         [255, 255, 255],
         `"truncComponents(func(white))"`,
       );
 
       assertEquals(
-        truncComponents(func(black)),
+        getTruncComponents(func(black)),
         [0, 0, 0],
         `"truncComponents(func(black))"`,
       );
