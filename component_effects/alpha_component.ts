@@ -25,8 +25,7 @@ export function alphaComponent(
 ): Rgba | Rgb {
   components = [...components];
 
-  if (alpha && components.length === 3) components.push(percent(percentage));
+  if (alpha) components[3] = percent(percentage);
   else if (components.length === 4) components.pop();
-
   return components;
 }
