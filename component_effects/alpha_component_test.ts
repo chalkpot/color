@@ -1,34 +1,42 @@
 // Copyright 2023 mineejo. All rights reserved. MIT license.
 
-import { Rgb } from "../color/rgb.ts";
-import { Rgba } from "../color/rgba.ts";
 import { assertEquals } from "../dev_deps.ts";
 import { alphaComponent } from "./alpha_component.ts";
 
-/**
- * ### Example
- *
- * ```ts
- * const firstColor = alphaColor([255, 0, 0], true, 90);
- * console.log(firstColor); // [255, 0, 0, 90];
- *
- * const secondColor = alphaColor([0, 255, 0], true);
- * console.log(secondColor); // [0, 255, 0, 100];
- *
- * const thirdColor = alphaColor(secondColor, false);
- * console.log(thirdColor); // [0, 255, 0];
- * ```
- */
-Deno.test("alpha color function correct", () => {
-  const redColorComponents: Rgb = [255, 0, 0];
-  const rgb: Rgb | Rgba = alphaComponent([...redColorComponents, 100], false);
-  const rgba: Rgb | Rgba = alphaComponent(rgb, true);
+Deno.test("alpha color function correct", async (t) => {
+  await t.step("alpha value added correct", () => {
+    assertEquals(
+      alphaComponent([255, 0, 0], true),
+      [255, 0, 0, 100],
+      `"alphaComponent([255, 0, 0, 100], true)"`,
+    );
 
-  assertEquals(rgb, redColorComponents, `"rgb"`);
-  assertEquals(rgba, [...redColorComponents, 100], `"rgba"`);
-  assertEquals(
-    alphaComponent(rgb, true, 90),
-    [...redColorComponents, 90],
-    `"alphaColor(rgb, true, 90)"`,
-  );
+    assertEquals(
+      alphaComponent([255, 0, 0], true, 90),
+      [255, 0, 0, 90],
+      `"alphaComponent([255, 0, 0], true, 90)"`,
+    );
+  });
+
+  await t.step("alpha value removed correct", () => {
+    assertEquals(
+      alphaComponent([255, 0, 0, 100], false),
+      [255, 0, 0],
+      `"alphaComponent([255, 0, 0, 100], false)"`,
+    );
+
+    assertEquals(
+      alphaComponent([255, 0, 0, 100], false, 90),
+      [255, 0, 0],
+      `"alphaComponent([255, 0, 0, 100], false)"`,
+    );
+  });
+
+  await t.step("alpha value overwritten correct", () => {
+    assertEquals(
+      alphaComponent([255, 0, 0, 50], true, 90),
+      [255, 0, 0, 90],
+      `"alphaComponent([255, 0, 0, 50], true, 90)"`,
+    );
+  });
 });
