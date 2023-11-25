@@ -18,12 +18,6 @@ other package managers or CDNs like `UNPKG`. For `Deno` reference see
 [NPM page]: https://www.npmjs.com/package/@chalkpot/color
 [module page]: https://deno.land/x/chalkpot_color
 
-## Related
-
-- [colors](https://github.com/chalkpot/colors) - Colors is JSON with the names
-  of colors, their values and localization. Colors are based on HTML color names
-  and CSS keywords.
-
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to
